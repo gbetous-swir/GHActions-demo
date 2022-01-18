@@ -1,0 +1,13 @@
+name: Periodic test
+on:
+  schedule:
+    - cron: "17/30 * * * *" # run every 30mn starting at 17
+
+jobs:
+  cron_test:
+    name: Scheduled test
+    uses: gbetous-swir/GHActions-demo/.github/workflows/jobs.yml@main
+    with:
+       usernames: '["Again"]'
+       hello_job: false
+       goodbye_job: true

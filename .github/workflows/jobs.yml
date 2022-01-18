@@ -1,0 +1,28 @@
+name: Jobs definition
+on: 
+  workflow_call:
+    inputs:
+      hello_job:
+        type: boolean
+        required: true
+      goodbye_job:
+        type: boolean
+        required: true
+      usernames:
+        type: string
+        required: true
+jobs:
+  test_call:
+    runs-on: ubuntu-latest
+    name: Greetings to ${{ matrix.username }}
+    strategy:
+      matrix:
+        username : ${{fromJson(inputs.usernames)}}
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./hello.sh ${{ matrix.username }}
+        shell : bash
+        if: ${{inputs.hello_job}}
+      - run: ./goodbye.sh ${{ matrix.username }}
+        shell : bash
+        if: ${{inputs.goodbye_job}}

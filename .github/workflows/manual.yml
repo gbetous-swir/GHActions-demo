@@ -1,0 +1,24 @@
+name: Manual run
+on:
+  workflow_dispatch:
+    inputs:
+      names:
+        description: 'Person to greet'
+        type: string
+        default: '["Manuel", "Roberto"]'
+      hello:
+        description: 'Hello'
+        type: boolean
+        default: false
+      goodbye:
+        description: 'Goodbye'
+        type: boolean
+        default: false
+jobs:
+  manual_test:
+    name: manual test
+    uses: gbetous-swir/GHActions-demo/.github/workflows/jobs.yml@main
+    with:
+       usernames:  ${{ github.event.inputs.names }}
+       hello_job:  ${{ github.event.inputs.hello }}
+       goodbye_job:  ${{ github.event.inputs.goodbye }}

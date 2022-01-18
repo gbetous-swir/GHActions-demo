@@ -1,0 +1,11 @@
+name: CI
+on: [push]
+
+jobs:
+  push_test:
+    name: Test on push
+    uses: gbetous-swir/GHActions-demo/.github/workflows/jobs.yml@main
+    with:
+       usernames: '["Toto", "Titi"]'
+       hello_job: true
+       goodbye_job: true
