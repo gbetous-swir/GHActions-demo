@@ -19,6 +19,7 @@ jobs:
     name: manual test
     uses: gbetous-swir/GHActions-demo/.github/workflows/jobs.yml@main
     with:
+       # As GitHub Interface returns a string even on boolean type, lcast it to real boolean
        usernames:  ${{ github.event.inputs.names }}
-       hello_job:  ${{ github.event.inputs.hello }}
-       goodbye_job:  ${{ github.event.inputs.goodbye }}
+       hello_job:  ${{ github.event.inputs.hello == 'true' }}
+       goodbye_job:  ${{ github.event.inputs.goodbye == 'true' }}
