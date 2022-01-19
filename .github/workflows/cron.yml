@@ -1,7 +1,7 @@
 name: Periodic test
 on:
   schedule:
-    - cron: "17/30 * * * *" # run every 30mn starting at 17
+    - cron: "17 1 * * *" # run every day at 1:17 am
 
 jobs:
   cron_test:
